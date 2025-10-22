@@ -1,4 +1,4 @@
-# bump: z3-version /Z3_VERSION="(.*)"/ https://github.com/Z3Prover/z3/archive/refs/tags/z3-|re:/z3-([\d.]+).tar.gz/$1/|semver:*
+# bump: z3-version /Z3_VERSION="(.*)"/ gitrefs:https://github.com/Z3Prover/z3.git|re:/z3-([\d.]+)/$1/|semver:*
 Z3_VERSION="4.15.3"
 
 ###
