@@ -1,0 +1,25 @@
+diff --git i/src/math/lp/static_matrix.cpp w/src/math/lp/static_matrix.cpp
+index 26ce218..8ce80e2 100644
+--- i/src/math/lp/static_matrix.cpp
++++ w/src/math/lp/static_matrix.cpp
+@@ -59,5 +59,6 @@ namespace lp {
+     template void static_matrix<mpq,mpq>::add_rows(mpq const &,unsigned int,unsigned int);
+     template void static_matrix<mpq, mpq>:: pivot_term_to_row_given_cell<lar_term>(lar_term const & term, column_cell&c, unsigned j, int j_sign);
+     template void static_matrix<mpq, mpq>::add_term_to_row<lar_term>(const mpq& alpha, lar_term const & term, unsigned ii);
++    template void static_matrix<mpq, mpq>::remove_element(std::vector<row_cell<mpq>, std_allocator<row_cell<mpq> > >&, row_cell<mpq>&);
+     template void static_matrix<mpq, numeric_pair<mpq> >::remove_element(std::vector<row_cell<mpq>, std_allocator<row_cell<mpq> > >&, row_cell<mpq>&);
+ }
+diff --git i/src/util/memory_manager.cpp w/src/util/memory_manager.cpp
+index eddadb9..345d17f 100644
+--- i/src/util/memory_manager.cpp
++++ w/src/util/memory_manager.cpp
+@@ -245,6 +245,9 @@ void * memory::allocate(char const* file, int line, char const* obj, size_t s) {
+ // when the local counter > SYNCH_THRESHOLD 
+ #define SYNCH_THRESHOLD 100000
+ 
++#ifdef __MVS__
++#define thread_local 
++#endif
+ thread_local long long g_memory_thread_alloc_size    = 0;
+ thread_local long long g_memory_thread_alloc_count   = 0;
+ 
