@@ -1,5 +1,5 @@
 # bump: z3-version /Z3_VERSION="(.*)"/ gitrefs:https://github.com/Z3Prover/z3.git|re:/z3-([\d.]+)/$1/|semver:*
-Z3_VERSION="4.15.5"
+Z3_VERSION="4.15.7"
 
 ###
 ### Build control file for the z3 port
